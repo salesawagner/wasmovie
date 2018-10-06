@@ -2,6 +2,11 @@
 version: 2
 jobs:
   build:
+	  
+    branches:
+      only:
+          - master
+		  - wip/circleci
 
     macos:
       xcode: "9.0.3"
