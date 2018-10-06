@@ -2,7 +2,7 @@
 version: 2
 jobs:
   build:
-	  
+
     branches:
       only:
           - master
@@ -37,4 +37,3 @@ jobs:
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
-
