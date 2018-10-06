@@ -3,14 +3,12 @@ version: 2
 jobs:
   build:
 
-    # Specify the Xcode version to use
     macos:
       xcode: "9.0.3"
 
     steps:
       - checkout
 
-      # Install CocoaPods
       - run:
           name: Install CocoaPods
           command: pod install
