@@ -14,7 +14,7 @@ Requirements
 
 CI
 =====================
-- **<a href="http://circleci.com"> CircleCI </a>**
+- **<a href="http://travis-ci.org"> Travis </a>**
 - **<a href="https://codecov.io"> Codecov </a>**
 
 Author
