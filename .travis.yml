@@ -10,11 +10,11 @@ branches:
   - wip/travis
 
 before_install:
-- rm -rf /Users/travis/Library/Developer/Xcode/DerivedData/WasMovie-*/
-- rvm use $RVM_RUBY_VERSION
-- brew update
-- brew upgrade swiftlint
-- pod repo update
+  - rm -rf /Users/travis/Library/Developer/Xcode/DerivedData/WasMovie-*/
+  - rvm use $RVM_RUBY_VERSION
+  - brew update
+  - brew upgrade swiftlint
+  - pod repo update
 
 script:
 - xcodebuild -workspace WasMovie.xcworkspace -scheme WasMovie -destination "platform=iOS Simulator,name=iPhone X,OS=9.0" clean test | xcpretty
