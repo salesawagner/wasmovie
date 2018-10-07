@@ -17,7 +17,7 @@ before_install:
   - pod repo update
 
 script:
-- xcodebuild -workspace WasMovie.xcworkspace -scheme WasMovie -destination "platform=iOS Simulator,name=iPhone X,OS=9.0" clean test | xcpretty
+- xcodebuild -workspace WasMovie.xcworkspace -scheme WasMovie -destination "platform=iOS Simulator,name=iPhone 6,OS=9.0" clean test | xcpretty
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t ccaac61c-1ef8-4f55-808c-671c14ba2e52
