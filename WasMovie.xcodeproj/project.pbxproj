@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4CF5104775070186E724FC18 /* Pods_WasMovieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48878C3DD780F661A0287E9B /* Pods_WasMovieTests.framework */; };
-		A6D8E9D810FED42902BCF864 /* Pods_WasMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7283D446F6FAF780482530FF /* Pods_WasMovie.framework */; };
+		78B97B4A2D9ABCBCF00370F7 /* Pods_WasMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7283D446F6FAF780482530FF /* Pods_WasMovie.framework */; };
 		A701D31521696A1700619860 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A701D31421696A1700619860 /* AppDelegate.swift */; };
 		A701D31721696A1700619860 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A701D31621696A1700619860 /* ViewController.swift */; };
 		A701D32A21696A1900619860 /* WasMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A701D32921696A1900619860 /* WasMovieTests.swift */; };
@@ -47,19 +47,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A701D30E21696A1700619860 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6D8E9D810FED42902BCF864 /* Pods_WasMovie.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A701D32221696A1900619860 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4CF5104775070186E724FC18 /* Pods_WasMovieTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDE848F671EDFEDADF21E40F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78B97B4A2D9ABCBCF00370F7 /* Pods_WasMovie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,10 +167,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A701D32E21696A1900619860 /* Build configuration list for PBXNativeTarget "WasMovie" */;
 			buildPhases = (
-				158B7657600901A987C33B54 /* [CP] Check Pods Manifest.lock */,
+				F6F254B042F184533723232B /* [CP] Check Pods Manifest.lock */,
 				A701D30D21696A1700619860 /* Sources */,
-				A701D30E21696A1700619860 /* Frameworks */,
 				A701D30F21696A1700619860 /* Resources */,
+				FDE848F671EDFEDADF21E40F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -259,28 +259,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		158B7657600901A987C33B54 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WasMovie-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9457ECB585B94CE688AA524D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -297,6 +275,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-WasMovieTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6F254B042F184533723232B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WasMovie-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -385,7 +385,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -440,7 +440,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
