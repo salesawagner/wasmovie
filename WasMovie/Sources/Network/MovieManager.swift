@@ -9,9 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class MovieManager: NSObject {
-
-	// MARK: - Internal Methods
+class MovieManager {
 
 	class func requestList(query: String, page: Int = 1, completion: @escaping CompletionSuccessMovies) -> Request? {
 		let url = API.search(query, page: page)

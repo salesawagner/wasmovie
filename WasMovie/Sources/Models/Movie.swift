@@ -6,10 +6,9 @@
 //  Copyright © 2018 Wagner Sales. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
 
-class Movie: NSObject {
+class Movie {
 
 	let id: Int
 	let title: String
@@ -22,7 +21,7 @@ class Movie: NSObject {
 		self.posterPath = json["poster_path"].stringValue
 		self.overview = json["overview"].stringValue
 	}
-	
+
 	class func arrayFromJson(_ json: JSON) -> [Movie] {
 		guard let results = json["results"].array else { return [] }
 
