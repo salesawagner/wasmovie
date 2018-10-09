@@ -6,7 +6,6 @@
 //  Copyright © 2016 Wagner Sales. All rights reserved.
 //
 
-import UIKit
 import Alamofire
 import SwiftyJSON
 
@@ -15,7 +14,7 @@ class MovieManager: NSObject {
 	// MARK: - Internal Methods
 
 	class func requestList(query: String, page: Int = 1, completion: @escaping CompletionSuccessMovies) -> Request? {
-		let url = URL.search(query, page: page)
+		let url = API.search(query, page: page)
 		return Alamofire.request(url, method: .get).responseJSON { response in
 			guard let value = response.result.value else {
 				completion(false, nil)
@@ -26,9 +25,9 @@ class MovieManager: NSObject {
 			completion(true, movies)
 		}
 	}
-	
+
 	class func requestById(_ id: Int, completion: @escaping CompletionSuccessMovie ) -> Request? {
-		let url = URL.byId(id)
+		let url = API.byId(id)
 		return Alamofire.request(url, method: .get).responseJSON { response in
 			guard let value = response.result.value else {
 				completion(false, nil)
