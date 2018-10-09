@@ -36,7 +36,7 @@ class API {
 	class func search(_ query: String, page: Int = 1) -> String {
 		var url = self.baseURL
 		url += "/search/movie"
-		url += self.key
+		url += "/?api_key=" + self.key
 		url += "&query=" + query
 		url += "&page=" + "\(page)"
 		return url
@@ -46,7 +46,7 @@ class API {
 		var url = self.baseURL
 		url += "/movie"
 		url += "/\(id)"
-		url += self.key
+		url += "/?api_key=" + self.key
 		return url
 	}
 
