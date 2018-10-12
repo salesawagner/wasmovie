@@ -14,6 +14,8 @@ class CellViewModel: MovieViewModelProtocol {
 
 	let id: Int
 	let title: String
+	let releaseDate: String
+	let overview: String
 	let posterPath: String
 
 	// MARK: - Constructors
@@ -21,6 +23,8 @@ class CellViewModel: MovieViewModelProtocol {
 	required init(movie: Movie) {
 		self.id = movie.id
 		self.title = movie.title
+		self.releaseDate = "10/10/1984" // TODO:
+		self.overview = movie.overview
 		self.posterPath = movie.posterPath
 	}
 }

@@ -6,7 +6,10 @@
 //  Copyright © 2018 Wagner Sales. All rights reserved.
 //
 
+import UIKit
+
 typealias Completion = () -> Void
+typealias CompletionImage = (_ image: UIImage?) -> Void
 typealias CompletionSuccess = (_ success: Bool) -> Void
-typealias CompletionSuccessMovies = (_ success: Bool, _ movies: [Movie]?) -> Void
-typealias CompletionSuccessMovie = (_ success: Bool, _ movie: Movie?) -> Void
+typealias CompletionList = (_ page: Int, _ totalPages: Int, _ movies: [Movie], _ success: Bool) -> Void
+typealias CompletionDetail = (_ movie: Movie?, _ success: Bool) -> Void

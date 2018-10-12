@@ -17,17 +17,17 @@ class API {
 		case big = "w780"
 	}
 	
-	// MARK: - Properties
+	// MARK: - Private Properties
 
-	static var key: String {
+	static private var key: String {
 		return "2696829a81b1b5827d515ff121700838"
 	}
 
-	static var baseURL: String {
+	static private var baseURL: String {
 		return "http://api.themoviedb.org/3"
 	}
 
-	static var basePhotoURL: String {
+	static private var basePhotoURL: String {
 		return "http://image.tmdb.org/t/p/"
 	}
 
@@ -50,7 +50,7 @@ class API {
 		return url
 	}
 
-	class func photo(photoSize: API.PhotoSize = .thumb, posterPath: String) -> String {
+	class func poster(photoSize: API.PhotoSize = .thumb, posterPath: String) -> String {
 		var url = self.basePhotoURL
 		url += "/" + photoSize.rawValue
 		url += "/" + posterPath

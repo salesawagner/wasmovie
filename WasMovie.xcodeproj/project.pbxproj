@@ -12,6 +12,8 @@
 		A701D31721696A1700619860 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A701D31621696A1700619860 /* ViewController.swift */; };
 		A701D32A21696A1900619860 /* WasMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A701D32921696A1900619860 /* WasMovieTests.swift */; };
 		A70F0C1121696B28004956D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A70F0C1021696B28004956D7 /* Assets.xcassets */; };
+		A72A3D2921700ED600885FAA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D2821700ED600885FAA /* ListTableViewCell.swift */; };
+		A72A3D2B21703E8400885FAA /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D2A21703E8400885FAA /* UIImageViewExtensions.swift */; };
 		A7337E33216C45820017CA43 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E32216C45820017CA43 /* Movie.swift */; };
 		A7337E36216C45B90017CA43 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E35216C45B90017CA43 /* Typealias.swift */; };
 		A7337E3D216C4FB50017CA43 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E3B216C4FB50017CA43 /* API.swift */; };
@@ -49,6 +51,8 @@
 		A701D32921696A1900619860 /* WasMovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WasMovieTests.swift; sourceTree = "<group>"; };
 		A701D32B21696A1900619860 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A70F0C1021696B28004956D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A72A3D2821700ED600885FAA /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		A72A3D2A21703E8400885FAA /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		A7337E32216C45820017CA43 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A7337E35216C45B90017CA43 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		A7337E3B216C4FB50017CA43 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A7337E43216C652C0017CA43 /* StringExtensions.swift */,
+				A72A3D2A21703E8400885FAA /* UIImageViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				A7337E48216C65D10017CA43 /* ListViewModel.swift */,
 				A7337E4A216C65EF0017CA43 /* CellViewModel.swift */,
 				A7337E51216C6BC40017CA43 /* ListViewController.swift */,
+				A72A3D2821700ED600885FAA /* ListTableViewCell.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -412,11 +418,13 @@
 				A701D31721696A1700619860 /* ViewController.swift in Sources */,
 				A701D31521696A1700619860 /* AppDelegate.swift in Sources */,
 				A7337E49216C65D10017CA43 /* ListViewModel.swift in Sources */,
+				A72A3D2921700ED600885FAA /* ListTableViewCell.swift in Sources */,
 				A7337E36216C45B90017CA43 /* Typealias.swift in Sources */,
 				A7337E41216C64D80017CA43 /* Localized.swift in Sources */,
 				A7337E50216C6AD20017CA43 /* MovieViewModelProtocol.swift in Sources */,
 				A7337E4E216C66140017CA43 /* DetailViewModel.swift in Sources */,
 				A7337E52216C6BC40017CA43 /* ListViewController.swift in Sources */,
+				A72A3D2B21703E8400885FAA /* UIImageViewExtensions.swift in Sources */,
 				A7337E3E216C4FB50017CA43 /* MovieManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
