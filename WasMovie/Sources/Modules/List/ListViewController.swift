@@ -14,24 +14,53 @@ class ListViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
 
-	var viewModel: ListViewModelProtocol = ListViewModel()
-	private lazy var refreshControl: UIRefreshControl = {
-		let refreshControl = UIRefreshControl()
-		refreshControl.addTarget(self, action: #selector(self.didRefresh(_:)), for: .valueChanged)
-		return refreshControl
-	}()
-	private let loadingPagination = UIActivityIndicatorView(style: .gray)
-	private var query: String = "Batman"
+	let viewModel: ListViewModelProtocol = ListViewModel()
+	private var resultsController: UITableViewController!
+	private var searchController: UISearchController!
+	private var refreshControl: UIRefreshControl!
+	private var loadingPagination: UIActivityIndicatorView!
+	private var query: String = "" {
+		didSet {
+			self.loadMovies()
+		}
+	}
 
 	// MARK: - Private Methods
 
 	private func setups() {
 		self.setupTitle()
+		self.setupSearchBar()
+		self.setupRefreshControl()
 		self.setuptableView()
+		self.setupLoadingPagination()
 	}
 
 	private func setupTitle() {
 		self.title = self.viewModel.viewTitle
+	}
+	
+	private func setupSearchBar() {
+		self.searchController = UISearchController(searchResultsController: nil)
+		self.searchController.dimsBackgroundDuringPresentation = false
+		self.searchController.hidesNavigationBarDuringPresentation = false
+		
+		self.searchController.searchBar.placeholder = self.viewModel.searchPlaceHolder
+		self.searchController.searchBar.delegate = self
+		self.searchController.searchBar.sizeToFit()
+		self.searchController.searchBar.searchBarStyle = .minimal
+		self.searchController.searchBar.setShowsCancelButton(true, animated: false)
+		self.searchController.searchBar.isTranslucent = false
+
+		self.extendedLayoutIncludesOpaqueBars = true
+		self.definesPresentationContext = false
+
+		self.hideSearch()
+	}
+
+	private func setupRefreshControl() {
+		let selector = #selector(self.didRefresh(_:))
+		self.refreshControl = UIRefreshControl()
+		self.refreshControl.addTarget(self, action: selector, for: .valueChanged)
 	}
 
 	private func setuptableView() {
@@ -43,12 +72,32 @@ class ListViewController: UIViewController {
 		self.tableView.addSubview(self.refreshControl)
 	}
 
+	private func setupLoadingPagination() {
+		self.loadingPagination = UIActivityIndicatorView(style: .gray)
+	}
+
 	@objc func didRefresh(_ refreshControl: UIRefreshControl) {
 		self.loadMovies(useLoading: false) { success in
 			self.refreshControl.endRefreshing()
 		}
 	}
 
+	@objc private func showSearch() {
+		self.navigationItem.titleView = self.searchController.searchBar
+		self.navigationItem.rightBarButtonItem = nil
+	}
+
+	@objc private func hideSearch() {
+		if let text = self.searchController.searchBar.text, !text.isEmpty {
+			return
+		}
+
+		self.navigationItem.titleView = nil
+		
+		let selector = #selector(self.showSearch)
+		let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: selector)
+		self.navigationItem.rightBarButtonItem = searchButton
+	}
 	private func loadMovies(useLoading: Bool = true,
 							loadType: ListViewModel.LoadType = .refresh,
 							completion: CompletionSuccess? = nil) {
@@ -71,6 +120,22 @@ class ListViewController: UIViewController {
 		super.viewDidLoad()
 		self.setups()
 		self.loadMovies()
+	}
+}
+
+// MARK: - UITableViewDataSource
+
+extension ListViewController: UISearchBarDelegate {
+
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		self.query = searchBar.text ?? ""
+		self.hideSearch()
+	}
+
+	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.text = ""
+		self.query = ""
+		self.hideSearch()
 	}
 }
 
@@ -100,6 +165,8 @@ extension ListViewController: UITableViewDataSource {
 	}
 }
 
+// MARK: - UITableViewDelegate
+
 extension ListViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -115,13 +182,12 @@ extension ListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
 		let lastRowIndex = tableView.numberOfRows(inSection: indexPath.section) - 1
-		if lastRowIndex == indexPath.row && self.viewModel.hasNextPage {
+		guard lastRowIndex == indexPath.row && self.viewModel.hasNextPage else { return }
 
-			self.loadingPagination.startAnimating()
-			self.loadMovies(useLoading: false, loadType: .nextPage) { success in
-				self.loadingPagination.stopAnimating()
-			}
-
+		self.loadingPagination.startAnimating()
+		self.loadMovies(useLoading: false, loadType: .nextPage) { success in
+			self.loadingPagination.stopAnimating()
 		}
+
 	}
 }

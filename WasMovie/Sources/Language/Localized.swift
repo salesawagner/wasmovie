@@ -15,6 +15,10 @@ struct L {
 		return "LIST".localized
 	}
 
+	static var search: String {
+		return "SEARCH".localized
+	}
+	
 	static var details: String {
 		return "DETAILS".localized
 	}
