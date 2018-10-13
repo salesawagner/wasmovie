@@ -11,6 +11,7 @@ import Foundation
 protocol ListViewModelProtocol {
 
 	var viewTitle: String { get }
+	var searchPlaceHolder: String { get }
 	var cellViewModels: [CellViewModel] { get }
 	var hasNextPage: Bool { get }
 
@@ -45,6 +46,7 @@ class ListViewModel: ListViewModelProtocol {
 	// MARK: - Properties
 
 	let viewTitle: String = L.list
+	let searchPlaceHolder: String = L.search
 	var cellViewModels: [CellViewModel] = []
 	var hasNextPage: Bool {
 		return self.nextPage < self.totalPages

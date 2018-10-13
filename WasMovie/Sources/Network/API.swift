@@ -33,11 +33,20 @@ class API {
 
 	// MARK: - Internal Methods
 
-	class func search(_ query: String, page: Int = 1) -> String {
+	class func search(_ query: String, page: Int) -> String {
 		var url = self.baseURL
 		url += "/search/movie"
 		url += "/?api_key=" + self.key
 		url += "&query=" + query
+		url += "&page=" + "\(page)"
+		return url
+	}
+	
+	class func discover(page: Int) -> String {
+		var url = self.baseURL
+		url += "/discover/movie"
+		url += "/?api_key=" + self.key
+		url += "&sort_by=popularity.desc"
 		url += "&page=" + "\(page)"
 		return url
 	}
