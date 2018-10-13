@@ -36,7 +36,14 @@ struct L {
 	static var sorry: String {
 		return "SORRY".localized
 	}
+	
 	static var somethingWentWrong: String {
 		return "SOMETHING_WRONG".localized
+	}
+	
+	// MARK: - MESSAGES
+	
+	static var emptyMessage: String {
+		return "EMPTY_MESSAGE".localized
 	}
 }

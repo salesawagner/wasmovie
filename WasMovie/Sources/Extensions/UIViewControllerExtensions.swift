@@ -46,9 +46,28 @@ extension UIViewController {
 	}
 
 	func showError() {
-		let title		= L.sorry
-		let subtitle	= L.somethingWentWrong
+		let title = L.sorry
+		let subtitle = L.somethingWentWrong
 		SCLAlertView().showTitle(title, subTitle: subtitle, style: .error)
+	}
+	
+	class var visible: UIViewController? {
+		guard
+			let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+			let window = appDelegate.window,
+			let visible = window.visibleViewController else {
+				return nil
+		}
+		return visible
+	}
+
+	private class var mainWindow: UIWindow? {
+		guard
+			let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+			let window = appDelegate.window else {
+				return nil
+		}
+		return window
 	}
 
 	func preloadView() {

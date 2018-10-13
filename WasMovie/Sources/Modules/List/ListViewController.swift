@@ -38,7 +38,7 @@ class ListViewController: UIViewController {
 	private func setupTitle() {
 		self.title = self.viewModel.viewTitle
 	}
-	
+
 	private func setupSearchBar() {
 		self.searchController = UISearchController(searchResultsController: nil)
 		self.searchController.dimsBackgroundDuringPresentation = false
@@ -70,6 +70,8 @@ class ListViewController: UIViewController {
 		self.tableView.backgroundColor = UIColor.clear
 		self.tableView.separatorColor = UIColor.clear
 		self.tableView.addSubview(self.refreshControl)
+		self.tableView.placeholderDelegate = self
+		self.tableView.placeholder(isShow: false)
 	}
 
 	private func setupLoadingPagination() {
@@ -98,6 +100,7 @@ class ListViewController: UIViewController {
 		let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: selector)
 		self.navigationItem.rightBarButtonItem = searchButton
 	}
+
 	private func loadMovies(useLoading: Bool = true,
 							loadType: ListViewModel.LoadType = .refresh,
 							completion: CompletionSuccess? = nil) {
@@ -107,11 +110,16 @@ class ListViewController: UIViewController {
 		}
 
 		self.viewModel.loadMovies(query: self.query, loadType: loadType) { success in
-			self.tableView.reloadData()
+			self.reloadData()
 			self.stopLoading(hasError: !success)
 			completion?(success)
 		}
 
+	}
+
+	private func reloadData() {
+		self.tableView.reloadData()
+		self.tableView.placeholder(isShow: self.viewModel.cellViewModels.count == 0, animate: true)
 	}
 
 	// MARK: - Internal Methods
@@ -189,5 +197,13 @@ extension ListViewController: UITableViewDelegate {
 			self.loadingPagination.stopAnimating()
 		}
 
+	}
+}
+
+extension ListViewController: UITableViewPlaceholderDelegate {
+	func placeholderViewModel(in tableView: UITableView) -> PlaceholderViewModel {
+		let image = UIImage(named: "smile-sad")
+		let placeholder = PlaceholderViewModel(image: image, title: L.sorry, message: L.emptyMessage)
+		return placeholder
 	}
 }
