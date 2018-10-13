@@ -18,4 +18,21 @@ struct L {
 	static var details: String {
 		return "DETAILS".localized
 	}
+
+	// MARK: - LOADING
+	static var wait: String {
+		return "WAIT".localized
+	}
+
+	static var loading: String {
+		return "LOADING".localized
+	}
+	
+	// MARK: - ALERT
+	static var sorry: String {
+		return "SORRY".localized
+	}
+	static var somethingWentWrong: String {
+		return "SOMETHING_WRONG".localized
+	}
 }

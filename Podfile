@@ -9,5 +9,8 @@ target 'WasMovie' do
 
   # JSON parse
   pod 'SwiftyJSON'
+  
+  #UI
+  pod 'SCLAlertView'
 
 end

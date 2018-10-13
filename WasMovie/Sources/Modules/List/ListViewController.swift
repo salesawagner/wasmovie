@@ -49,13 +49,6 @@ class ListViewController: UIViewController {
 		}
 	}
 
-	private func startLoading() {
-		// TODO:
-	}
-	private func stopLoading(success: Bool = true) {
-		// TODO:
-	}
-
 	private func loadMovies(useLoading: Bool = true,
 							loadType: ListViewModel.LoadType = .refresh,
 							completion: CompletionSuccess? = nil) {
@@ -66,7 +59,7 @@ class ListViewController: UIViewController {
 
 		self.viewModel.loadMovies(query: self.query, loadType: loadType) { success in
 			self.tableView.reloadData()
-			self.stopLoading(success: success)
+			self.stopLoading(hasError: !success)
 			completion?(success)
 		}
 

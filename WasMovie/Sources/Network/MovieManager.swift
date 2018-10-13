@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class MovieManager {
 
-	class func requestList(query: String, page: Int = 1, completion: @escaping CompletionList) -> Request? {
+	class func requestList(query: String, page: Int, completion: @escaping CompletionList) -> Request? {
 		let url = API.search(query, page: page)
 		return Alamofire.request(url, method: .get).responseJSON { response in
 			guard
