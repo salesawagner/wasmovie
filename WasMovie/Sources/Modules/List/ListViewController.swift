@@ -24,6 +24,7 @@ class ListViewController: UIViewController {
 			}
 			self.setupTitle()
 			self.loadMovies()
+			self.tableView.scrollToTop(animated: true)
 		}
 	}
 

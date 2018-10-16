@@ -12,5 +12,8 @@ target 'WasMovie' do
   
   #UI
   pod 'SCLAlertView'
+  
+  #DB
+  pod 'RealmSwift'
 
 end

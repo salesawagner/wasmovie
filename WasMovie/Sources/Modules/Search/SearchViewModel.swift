@@ -8,22 +8,6 @@
 
 import UIKit
 
-class Query {
-	var text: String
-	init(text: String) {
-		self.text = text
-	}
-	
-	class func fake() -> [Query] {
-		var queries: [Query] = []
-		for i in 0...10 {
-			queries.append(Query(text: "\(i)"))
-		}
-		
-		return queries
-	}
-}
-
 class SearchCellViewModel {
 	var text: String
 	init(text: String) {
@@ -57,6 +41,8 @@ class SearchViewModel: SearchViewModelProtocol {
 	// MARK: - Constructors
 
 	func loadSugestions(completion: Completion) {
-		self.queries = Query.fake()
+		let queries = Query.listAll().prefix(10)
+		self.queries = queries.sorted(by: { $0.lastUpdate.compare($1.lastUpdate) == .orderedDescending })
+		completion()
 	}
 }

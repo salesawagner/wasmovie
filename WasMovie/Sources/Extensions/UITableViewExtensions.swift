@@ -61,4 +61,9 @@ extension UITableView {
 			self.backgroundView?.alpha = 1.0
 		}
 	}
+	
+	func scrollToTop(animated: Bool) {
+		let indexPath = IndexPath(row: 0, section: 0)
+		self.scrollToRow(at: indexPath, at: .top, animated: animated)
+	}
 }

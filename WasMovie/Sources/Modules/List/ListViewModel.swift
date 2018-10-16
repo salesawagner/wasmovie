@@ -63,6 +63,7 @@ class ListViewModel: ListViewModelProtocol {
 
 		let _ = MovieManager.requestList(query: query, page: self.nextPage) { (currentPage, totalPages, movies, success) in
 			if success {
+				Query.create(text: query)
 				self.currentPage = currentPage
 				self.totalPages = totalPages
 				

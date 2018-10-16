@@ -36,6 +36,8 @@
 		A7337E52216C6BC40017CA43 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E51216C6BC40017CA43 /* ListViewController.swift */; };
 		A774EBA121696C560004AA25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A774EB9F21696C560004AA25 /* LaunchScreen.storyboard */; };
 		A774EBA221696C560004AA25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A774EBA021696C560004AA25 /* Main.storyboard */; };
+		A77FA6B621757E0F003221C5 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FA6B521757E0F003221C5 /* PersistenceManager.swift */; };
+		A77FA6B821758301003221C5 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77FA6B721758301003221C5 /* Query.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		A7337E51216C6BC40017CA43 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		A774EB9F21696C560004AA25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A774EBA021696C560004AA25 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A77FA6B521757E0F003221C5 /* PersistenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		A77FA6B721758301003221C5 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		D5C43C48E8B04D6D0F6D2871 /* Pods-WasMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WasMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-WasMovie/Pods-WasMovie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +151,7 @@
 		A70F0C1221696BBE004956D7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				A77FA6B421757E05003221C5 /* Persistence */,
 				A72A3D3621727ABF00885FAA /* Components */,
 				A7337E46216C65AA0017CA43 /* Modules */,
 				A7337E42216C651A0017CA43 /* Extensions */,
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				A7337E32216C45820017CA43 /* Movie.swift */,
+				A77FA6B721758301003221C5 /* Query.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,6 +294,14 @@
 				A7337E4D216C66140017CA43 /* DetailViewModel.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		A77FA6B421757E05003221C5 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A77FA6B521757E0F003221C5 /* PersistenceManager.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		ADB347D3775FDD844EB9D7CD /* Pods */ = {
@@ -419,6 +433,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-WasMovie/Pods-WasMovie-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -428,6 +444,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -468,7 +486,9 @@
 				A72A3D2D217227A800885FAA /* UIViewControllerExtensions.swift in Sources */,
 				A7337E4B216C65EF0017CA43 /* CellViewModel.swift in Sources */,
 				A7337E44216C652C0017CA43 /* StringExtensions.swift in Sources */,
+				A77FA6B621757E0F003221C5 /* PersistenceManager.swift in Sources */,
 				A72A3D3121726AA000885FAA /* UITableViewExtensions.swift in Sources */,
+				A77FA6B821758301003221C5 /* Query.swift in Sources */,
 				A7337E3D216C4FB50017CA43 /* API.swift in Sources */,
 				A72A3D3B21727AD900885FAA /* PlaceholderView.swift in Sources */,
 				A7337E33216C45820017CA43 /* Movie.swift in Sources */,
