@@ -15,12 +15,14 @@ class ListViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 
 	let viewModel: ListViewModelProtocol = ListViewModel()
-	private var resultsController: UITableViewController!
-	private var searchController: UISearchController!
 	private var refreshControl: UIRefreshControl!
 	private var loadingPagination: UIActivityIndicatorView!
 	private var query: String = "" {
 		didSet {
+			guard oldValue != self.query else {
+				return
+			}
+			self.setupTitle()
 			self.loadMovies()
 		}
 	}
@@ -29,32 +31,24 @@ class ListViewController: UIViewController {
 
 	private func setups() {
 		self.setupTitle()
-		self.setupSearchBar()
+		self.setupNavigationBar()
 		self.setupRefreshControl()
 		self.setuptableView()
 		self.setupLoadingPagination()
 	}
 
 	private func setupTitle() {
-		self.title = self.viewModel.viewTitle
+		if !self.query.isEmpty {
+			self.title = self.query
+		} else {
+			self.title = self.viewModel.viewTitle
+		}
 	}
-
-	private func setupSearchBar() {
-		self.searchController = UISearchController(searchResultsController: nil)
-		self.searchController.dimsBackgroundDuringPresentation = false
-		self.searchController.hidesNavigationBarDuringPresentation = false
-		
-		self.searchController.searchBar.placeholder = self.viewModel.searchPlaceHolder
-		self.searchController.searchBar.delegate = self
-		self.searchController.searchBar.sizeToFit()
-		self.searchController.searchBar.searchBarStyle = .minimal
-		self.searchController.searchBar.setShowsCancelButton(true, animated: false)
-		self.searchController.searchBar.isTranslucent = false
-
-		self.extendedLayoutIncludesOpaqueBars = true
-		self.definesPresentationContext = false
-
-		self.hideSearch()
+	
+	private func setupNavigationBar() {
+		let selector = #selector(self.showSearch)
+		let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: selector)
+		self.navigationItem.rightBarButtonItem = searchButton
 	}
 
 	private func setupRefreshControl() {
@@ -68,7 +62,6 @@ class ListViewController: UIViewController {
 		self.tableView.showsVerticalScrollIndicator = false
 		self.tableView.showsHorizontalScrollIndicator = false
 		self.tableView.backgroundColor = UIColor.clear
-		self.tableView.separatorColor = UIColor.clear
 		self.tableView.addSubview(self.refreshControl)
 		self.tableView.placeholderDelegate = self
 		self.tableView.placeholder(isShow: false)
@@ -85,20 +78,10 @@ class ListViewController: UIViewController {
 	}
 
 	@objc private func showSearch() {
-		self.navigationItem.titleView = self.searchController.searchBar
-		self.navigationItem.rightBarButtonItem = nil
-	}
-
-	@objc private func hideSearch() {
-		if let text = self.searchController.searchBar.text, !text.isEmpty {
-			return
-		}
-
-		self.navigationItem.titleView = nil
-		
-		let selector = #selector(self.showSearch)
-		let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: selector)
-		self.navigationItem.rightBarButtonItem = searchButton
+		let searchViewController = SearchViewController(searchString: self.query)
+		searchViewController.delegate = self
+		let navigationController = UINavigationController(rootViewController: searchViewController)
+		self.present(navigationController, animated: true, completion: nil)
 	}
 
 	private func loadMovies(useLoading: Bool = true,
@@ -131,19 +114,11 @@ class ListViewController: UIViewController {
 	}
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - SearchViewControllerDelegate
 
-extension ListViewController: UISearchBarDelegate {
-
-	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-		self.query = searchBar.text ?? ""
-		self.hideSearch()
-	}
-
-	func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-		searchBar.text = ""
-		self.query = ""
-		self.hideSearch()
+extension ListViewController: SearchViewControllerDelegate {
+	func searchWillClose(searchString: String) {
+		self.query = searchString
 	}
 }
 
@@ -180,7 +155,7 @@ extension ListViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let detailViewModel = self.viewModel.createDetailViewModel(index: indexPath.row)
 		print(detailViewModel.title)
-//		TODO:
+//		TODO: Criar tela de deatalhes
 	}
 
 	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -199,6 +174,8 @@ extension ListViewController: UITableViewDelegate {
 
 	}
 }
+
+// MARK: - UITableViewPlaceholderDelegate
 
 extension ListViewController: UITableViewPlaceholderDelegate {
 	func placeholderViewModel(in tableView: UITableView) -> PlaceholderViewModel {

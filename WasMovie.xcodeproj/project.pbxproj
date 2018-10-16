@@ -21,6 +21,8 @@
 		A72A3D3B21727AD900885FAA /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D3821727AD900885FAA /* PlaceholderView.swift */; };
 		A72A3D3C21727AD900885FAA /* PlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72A3D3921727AD900885FAA /* PlaceholderView.xib */; };
 		A72A3D3D21727AD900885FAA /* PlaceholderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D3A21727AD900885FAA /* PlaceholderViewModel.swift */; };
+		A72A3D422172C97E00885FAA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D412172C97E00885FAA /* SearchViewController.swift */; };
+		A72A3D442172C99200885FAA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72A3D432172C99200885FAA /* SearchViewModel.swift */; };
 		A7337E33216C45820017CA43 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E32216C45820017CA43 /* Movie.swift */; };
 		A7337E36216C45B90017CA43 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E35216C45B90017CA43 /* Typealias.swift */; };
 		A7337E3D216C4FB50017CA43 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7337E3B216C4FB50017CA43 /* API.swift */; };
@@ -67,6 +69,8 @@
 		A72A3D3821727AD900885FAA /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		A72A3D3921727AD900885FAA /* PlaceholderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceholderView.xib; sourceTree = "<group>"; };
 		A72A3D3A21727AD900885FAA /* PlaceholderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderViewModel.swift; sourceTree = "<group>"; };
+		A72A3D412172C97E00885FAA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A72A3D432172C99200885FAA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		A7337E32216C45820017CA43 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A7337E35216C45B90017CA43 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		A7337E3B216C4FB50017CA43 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -201,6 +205,15 @@
 			path = PlaceholderView;
 			sourceTree = "<group>";
 		};
+		A72A3D402172C94E00885FAA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A72A3D412172C97E00885FAA /* SearchViewController.swift */,
+				A72A3D432172C99200885FAA /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		A7337E31216C45750017CA43 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +264,7 @@
 		A7337E46216C65AA0017CA43 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A72A3D402172C94E00885FAA /* Search */,
 				A7337E4C216C66020017CA43 /* Detail */,
 				A7337E47216C65B30017CA43 /* List */,
 			);
@@ -463,10 +477,12 @@
 				A7337E49216C65D10017CA43 /* ListViewModel.swift in Sources */,
 				A72A3D2F217227D700885FAA /* UIColorExtensions.swift in Sources */,
 				A72A3D3D21727AD900885FAA /* PlaceholderViewModel.swift in Sources */,
+				A72A3D422172C97E00885FAA /* SearchViewController.swift in Sources */,
 				A72A3D2921700ED600885FAA /* ListTableViewCell.swift in Sources */,
 				A7337E36216C45B90017CA43 /* Typealias.swift in Sources */,
 				A7337E41216C64D80017CA43 /* Localized.swift in Sources */,
 				A7337E50216C6AD20017CA43 /* MovieViewModelProtocol.swift in Sources */,
+				A72A3D442172C99200885FAA /* SearchViewModel.swift in Sources */,
 				A7337E4E216C66140017CA43 /* DetailViewModel.swift in Sources */,
 				A7337E52216C6BC40017CA43 /* ListViewController.swift in Sources */,
 				A72A3D3521727A1200885FAA /* UIWindowExtensions.swift in Sources */,

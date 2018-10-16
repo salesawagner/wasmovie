@@ -47,9 +47,11 @@ extension UITableView {
 	func placeholder(isShow: Bool, animate: Bool = false) {
 		guard isShow else {
 			self.backgroundView?.alpha = 0.0
+			self.separatorStyle = .singleLine
 			return
 		}
 		
+		self.separatorStyle = .none
 		if animate {
 			self.backgroundView?.alpha = 0.0
 			UIView.animate(withDuration: 0.3) {
